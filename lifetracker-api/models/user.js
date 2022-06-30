@@ -11,7 +11,7 @@ class User {
     // not putting async for now
     static async login(information) {
         // only need information to contain email and password to log in successfully
-
+        console.log("Entered login method function in User model (user.js)")
         if (!information)
         {
             throw new BadRequestError("No object passed through to log in.");
@@ -33,6 +33,7 @@ class User {
                 return User.returnPublicUser(maybeUserExists);
             }
         }
+        console.log("Got to the throw Unaothrized Error")
         throw new UnauthorizedError("Email/Password were incorrect/invalid combination")
 
     }

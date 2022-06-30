@@ -1,10 +1,14 @@
 import "./NavLinks.css"
 import * as React from "react"
 import { Link } from "react-router-dom"
+import { useAuthContext } from  "../../../contexts/auth"
 
 
 
 export default function NavLinks( { isLoggedIn } ) {
+
+  const { logoutUser } = useAuthContext()
+
   return (
     <div className="nav-links">
         <Link to="/activity">

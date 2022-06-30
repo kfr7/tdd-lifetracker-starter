@@ -2,16 +2,9 @@ import "./LoginForm.css"
 import * as React from "react"
 import { useAuthContext } from  "../../../contexts/auth"
 
-export default function LoginForm( {} ) {
+export default function LoginForm( { isLoggedIn, setIsLoggedIn } ) {
 
-    const { user, setUser,
-        initialized, setInitialized,
-        isProcessing, setIsProcessing,
-        error, setError,
-        loginUser,
-        signupUser,
-        fetchUserFromToken,
-        logoutUser} = useAuthContext()
+    const { loginUser } = useAuthContext()
 
     const [loginForm, setLoginForm] = React.useState({
         email: "",
@@ -36,7 +29,16 @@ export default function LoginForm( {} ) {
     }
 
     const handleOnSubmit = () => {
-        loginUser(loginForm)
+        console.log("Entered handleOnSubmit")
+        const possibleError = loginUser(loginForm)
+        if (possibleError === "")
+            {
+                setIsLoggedIn(true)
+            }
+            else
+            {
+                console.log(possibleError)
+            }
     }
 
     return (

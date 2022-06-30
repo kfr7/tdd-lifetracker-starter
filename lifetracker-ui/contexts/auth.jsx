@@ -1,7 +1,7 @@
 import * as React from "react"
 import ApiClient from "../services/apiClient"
 // const { API_BASE_URL } = require("../constants")
-API_BASE_URL = "http://localhost:3001"
+const API_BASE_URL = "http://localhost:3001"
 
 const AuthContext = React.createContext()
 
@@ -11,22 +11,24 @@ export const AuthContextProvider = ({ children }) => {
     const [isProcessing, setIsProcessing] = React.useState(false)
     const [error, setError] = React.useState(null)
 
-    const apiClient = ApiClient(API_BASE_URL)
+    const apiClient = new ApiClient(API_BASE_URL)
     
     React.useEffect(() => {
         console.log("Entered use effect for the AuthContext.Provider")
         const fetchUser = () => {
         // this would usually be your own backend, or localStorage
         // for example
-        const tokenForUser = null
+        let tokenForUser = null
         try {
-            tokenForUser = localStorage.getItem("lifetracker_token")
+            tokenForUser = window.localStorage.getItem("lifetracker_token")
+            console.log("THE TOKEN:", tokenForUser)
             if (tokenForUser !== null)
             {
                 apiClient.setToken(tokenForUser)
                 setIsProcessing(true)
                 setError(null)
-                setUser(this.fetchUserFromToken())
+                setUser(fetchUserFromToken())
+                console.log("THE USER IS..", user)
                 setError(null)
             }
         }
@@ -44,19 +46,23 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
     const loginUser = (userParameter) => {
-        apiClient.login(userParameter)
+        console.log("Entered loginUser in auth.jsx")
+        const error = apiClient.login(userParameter)
+        return error
     }
 
     const signupUser = (userParameter) => {
-        apiClient.signup(userParameter)
+        console.log("Entered signupUser in auth.jsx")
+        const error = apiClient.signup(userParameter)
+        return error 
     }
 
     const fetchUserFromToken = () => {
-        apiClient.fetchUserFromToken()
+        return apiClient.fetchUserFromToken()
     }
 
     const logoutUser = () => {
-        localStorage.removeItem("lifetracker_token")
+        window.localStorage.removeItem("lifetracker_token")
         location.reload()
     }
   

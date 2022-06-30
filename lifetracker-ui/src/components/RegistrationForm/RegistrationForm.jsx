@@ -1,7 +1,8 @@
 import "./RegistrationForm.css"
 import * as React from "react"
+import { useAuthContext } from  "../../../contexts/auth"
 
-export default function RegistrationForm( {} ) {
+export default function RegistrationForm( { setIsLoggedIn } ) {
     const [registrationForm, setRegistrationForm] = React.useState({
         username: "",
         first_name: "",
@@ -10,6 +11,8 @@ export default function RegistrationForm( {} ) {
         password: "",
         confirm_password: ""
     })
+
+    const { signupUser } = useAuthContext()
 
     const handleOnInputChange = (event) => {
         if (event.target.name === "email") {
@@ -24,12 +27,49 @@ export default function RegistrationForm( {} ) {
             // setErrors((e) => ({ ...e, email: null }))
             }
         }
+        if (event.target.name === "confirm_password") {
+            
+            console.log("Comparing both passwords")
+            console.log(event.target.value, registrationForm.password)
+            if (event.target.value !== registrationForm.password)
+            {
+                console.log("the 2 Passwords do not match.")
+            }
+            else {
+                console.log("Both passwords are good, continue")
+            }
+            
+        // setErrors((e) => ({ ...e, email: null }))
+            
+        }
         
         setRegistrationForm({ ...registrationForm, [event.target.name]: event.target.value })
     }
 
     const handleOnSubmit = () => {
         // here is where I would make the post request to the back end api
+        if (registrationForm.confirm_password !== registrationForm.password)
+        {
+            console.log("Cannot sign up user with passwords that do not match")
+        }
+        else 
+        {
+            const possibleError = signupUser({
+                "username": registrationForm.username,
+                "first_name": registrationForm.first_name,
+                "last_name": registrationForm.last_name,
+                "email": registrationForm.email,
+                "password": registrationForm.password
+            })
+            if (possibleError === "")
+            {
+                setIsLoggedIn(true)
+            }
+            else
+            {
+                console.log(possibleError)
+            }
+        }
     }
 
     return (
@@ -102,7 +142,7 @@ export default function RegistrationForm( {} ) {
                     onChange={handleOnInputChange}></input>
             </div>
 
-            <button className="btn" onClick={handleOnSubmit}>Log In</button>
+            <button className="btn" onClick={handleOnSubmit}>Register</button>
         </div>
     )
 }

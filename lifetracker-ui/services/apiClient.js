@@ -1,6 +1,6 @@
 import axios from "axios"
 // const { API_BASE_URL } = require("../constants")
-API_BASE_URL = "http://localhost:3001"
+const API_BASE_URL = "http://localhost:3001"
 
 export default class ApiClient {
     constructor(remoteHostUrl) {
@@ -16,9 +16,11 @@ export default class ApiClient {
     //     return this.token !== null
     // }
     request(endpoint, information) {
-        const user = null;
+        const userAndError = [null, ""];
         if (endpoint === "login")
         {
+            console.log("Entered correct condition (login)")
+            console.log("The information passed to log in", information)
             axios.post(`${API_BASE_URL}/auth/${endpoint}`,
                 information, 
                 {
@@ -28,11 +30,12 @@ export default class ApiClient {
                 })
                 .then((response) => {
                 console.log("RESPONSE FROM login", response)
-                localStorage.setItem("lifetracker_token", response.data.token)
+                window.localStorage.setItem("lifetracker_token", response.data.token)
               
                 }, reason => {
-                setError(reason);
-                console.error(error);
+                // setError(reason);
+                userAndError[1] = reason
+                console.log(reason);
                 })
         }
         else if (endpoint === "register")
@@ -46,10 +49,12 @@ export default class ApiClient {
                 })
                 .then((response) => {
                 console.log("RESPONSE FROM register", response)
-                this.login({"email": response.data.user.email, "password": response.data.user.password})
+                this.login({"email": information.email, "password": information.password})
+
                 }, reason => {
-                setError(reason);
-                console.error(error);
+                // setError(reason);
+                userAndError[1] = reason
+                console.log(reason);
                 })
         }
         else if (endpoint === "me")
@@ -64,28 +69,31 @@ export default class ApiClient {
                 })
                 .then((response) => {
                 console.log("RESPONSE FROM register", response)
-                user = response.data.user
+                userAndError[0] = response.data.user
                 }, reason => {
-                setError(reason);
-                console.error(error);
+                // setError(reason);
+                userAndError[1] = reason
+                console.log(reason);
                 })
         }
-        return user
+        return userAndError
     }
 
     login(user) {
         // user have keys called email and password
-        this.request("login", user)
+        console.log("Entered login in apiClient.js with", user)
+        return (this.request("login", user))[1]
     }
 
     signup(user) {
         // user have keys called email, password, username, fname, lname
-        this.request("register", user)
+        console.log("Entered signup in apiClient.js with", user)
+        return (this.request("register", user))[1]
     }
 
     fetchUserFromToken() {
         // token is stored inside of this.token
-        this.request("me", this.token)
+        return (this.request("me", this.token))[0]
     }
 
 }

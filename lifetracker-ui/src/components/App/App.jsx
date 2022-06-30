@@ -12,6 +12,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AuthContextProvider } from "../../../contexts/auth"
 
 export default function AppContainer(props) {
+
+  // React.useEffect(() => {
+  //   try {
+  //     window.localStorage.removeItem("lifetracker_token")
+  //   }
+  //   catch(error)
+  //   {
+  //     pass
+  //   }
+  // })
+
   return (
     <AuthContextProvider>
       <App />
@@ -28,12 +39,15 @@ function App(props) {
     <div className="app">
       <React.Fragment>
         <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} />
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} />} />
+            <Route path="/login" element={<LoginPage 
+                                            isLoggedIn={isLoggedIn}
+                                            setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/register" element={<RegistrationPage
-                                              isLoggedIn={isLoggedIn} />} />
+                                              isLoggedIn={isLoggedIn}
+                                              setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/activity" element={ isLoggedIn ? <ActivityPage /> : <AccessForbidden />} />
             <Route path="/nutrition/*" element={<NutritionPage />} />
             {/* MAKE ROUTES ADDITIONAL FOR... 

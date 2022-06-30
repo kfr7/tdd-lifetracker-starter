@@ -4,8 +4,15 @@ import LoginForm from "../LoginForm/LoginForm"
 import { useNavigate } from "react-router-dom"
 
 
-export default function LoginPage( { isLoggedIn } ) {
+export default function LoginPage( { isLoggedIn, setIsLoggedIn } ) {
   const navigate = useNavigate()
+
+  React.useEffect(() => {
+    if (isLoggedIn)
+    {
+      navigate("/activity")
+    }
+    }, [isLoggedIn]);
 
   return (
     <>
@@ -13,11 +20,14 @@ export default function LoginPage( { isLoggedIn } ) {
         <h3>
           Log In...
         </h3>
-        { isLoggedIn ?
+        <LoginForm isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}/>
+        {/* { isLoggedIn ?
           navigate("/activity")
         :
-          <LoginForm />
-        }
+          <LoginForm isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}/>
+        } */}
       </div>
     </>
   )
