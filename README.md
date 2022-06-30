@@ -253,13 +253,13 @@ The components in the `App.jsx` file should render the following components (alo
       - [x] If the user is already logged in, it should redirect them to the `/activity` page
       - [x] If no user is authenticated, it should render the `RegistrationForm.jsx` component and pass it any props it needs
 
-  - [ ] The **`LandingPage.jsx`** component:
+  - [x] The **`LandingPage.jsx`** component:
 
     - [x] Should render JSX that is wrapped by an element with the `className` of `landing-page`
     - [x] Should render an element with the `className` of `hero`
       - [x] Inside it, display a large hero image using an `img` element with the `className` of `hero-img`
       - [x] Render a brief blurb on what this application is about inside an element with the `className` of `cta`
-    - [ ] Should allow unauthenticated access
+    - [x] Should allow unauthenticated access
 
   - [ ] The **`activity`** context
 
