@@ -1,5 +1,6 @@
 import "./NutritionCard.css"
 import * as React from "react"
+import moment from "moment"
 // use above for all nutrition paths
 
 
@@ -26,7 +27,7 @@ export default function NutritionCard( {nutrition } ) {
             </div>
         </div>
         <div className="nutrition-date">
-            Created At: {nutrition.createdAt}
+            Created At: {moment(new Date(nutrition.createdAt)).format('MMMM Do, YYYY, HH:mm a')}
         </div>
        
     </div>

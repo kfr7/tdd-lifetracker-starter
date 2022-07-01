@@ -1,7 +1,11 @@
 .nutrition-overview {
     display: flex;
     flex-direction: column;
-    margin: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+    margin-left: 90px;
+    margin-right: 90px;
 }
 
 
@@ -13,21 +17,22 @@
     height: 120px;
 }
 
-.nutrition-overview .header h3 {
-    font-size: 36px;
+.nutrition-overview .banner h3 {
+    font-size: 35px;
     font-weight: 700;
     color: orange;
-    align-items: center;
 }
 
-.Button.outline.aqua {
-    background: transparent;
+.Button.outline {
+    background-color: #000000;
+background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
     color: orange;
     border: 1px solid black;
 }
 
 .Button.outline {
-    background: transparent;
+    background-color: #000000;
+background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
     color: orange;
     border: 1px solid black;
 }
@@ -49,4 +54,6 @@
     transition: all .2s ease;
     border: 1px solid transparent;
     white-space: nowrap;
+    background-color: #000000;
+background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
 }

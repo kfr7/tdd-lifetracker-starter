@@ -4,7 +4,9 @@ import * as React from "react"
 export default function AccessForbidden( {} ) {
   return (
     <div className="access-forbidden">
-      AccessForbidden Div
+      <h2 className="actual-text">
+        Access Forbidden ☹️
+      </h2>
     </div>
   )
 }
