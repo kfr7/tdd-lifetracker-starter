@@ -8,6 +8,13 @@ Everywhere around us is data waiting to be collected and utilized. In recent yea
 
 This application will be built using the battle-tested PERN stack - PostgreSQL, Express, React, and Node.
 
+
+### WEEK 4 (Frontend+BackEnd) Project 3 (Part 1) Walkthrough Video
+## (small bug causes necessary refresh)
+
+![](https://media2.giphy.com/media/PA2HeX1p5RAQNtIVcC/giphy.gif?cid=790b7611261536ad7a3f325c52641c458cb0277f97bc3db5&rid=giphy.gif&ct=g)
+
+
 ## Goals
 
 Building this application you will accomplish the following:
