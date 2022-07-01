@@ -20,7 +20,7 @@ input {
     background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
 }
 
-.btn {
+.submit-login {
     margin-top: 20px;
     margin-bottom: 20px;
 }

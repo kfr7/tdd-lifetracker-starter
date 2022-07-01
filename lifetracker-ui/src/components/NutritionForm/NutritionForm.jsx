@@ -86,7 +86,7 @@ export default function NutritionForm( {} ) {
                 value={form.imageUrl}
                 onChange={handleOnInputChange} />
         </div>
-        <button className="btn" onClick={handleOnSubmit}>Add</button>
+        <button className="submit-nutrition" onClick={handleOnSubmit}>Save</button>
     </div>
   )
 }

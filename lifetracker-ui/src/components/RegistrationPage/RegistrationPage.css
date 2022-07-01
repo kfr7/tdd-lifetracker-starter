@@ -4,3 +4,7 @@
     align-items: center;
     width: 100%;
 }
+
+.registration-page h3 {
+    color: orange;
+}

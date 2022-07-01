@@ -2,10 +2,14 @@ import "./NutritionOverview.css"
 import * as React from "react"
 import { Link } from "react-router-dom"
 import NutritionFeed from "../NutritionFeed/NutritionFeed"
+import { useNutritionContext } from "../../../contexts/nutrition"
+import Loading from "../Loading/Loading"
 // use above for all nutrition paths
 
 
 export default function NutritionOverview( {} ) {
+  const {error, isLoading } = useNutritionContext()
+
   return (
     <div className="nutrition-overview">
     
@@ -15,7 +19,9 @@ export default function NutritionOverview( {} ) {
             <button className="Button outline small outline">Record Nutrition</button>
         </Link>
       </div>
-      <NutritionFeed />
+      {isLoading ? 
+      <Loading />
+      : <NutritionFeed />}
     
     </div>
   )

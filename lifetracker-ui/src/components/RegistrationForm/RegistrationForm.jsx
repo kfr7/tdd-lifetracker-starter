@@ -89,7 +89,7 @@ export default function RegistrationForm( { redirect, setRedirect } ) {
     }
 
     return (
-        <div className="login-form">
+        <div className="registration-form">
 
 
             <div className="input-field">

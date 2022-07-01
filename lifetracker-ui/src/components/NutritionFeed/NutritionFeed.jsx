@@ -16,7 +16,8 @@ console.log(nutritions?.nutritions)
   return (
     <div className="nutrition-feed">
       <div className="grid">
-        {nutritions?.nutritions.map((nutrition, idx) => (
+        {nutritions===null ? <p className="empty-message">Nothing here yet</p> :
+        nutritions?.nutritions.map((nutrition, idx) => (
             <NutritionCard 
             key={idx}
             nutrition={{"name": nutrition.name,

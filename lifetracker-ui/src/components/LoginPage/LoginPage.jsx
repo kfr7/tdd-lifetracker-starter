@@ -20,7 +20,7 @@ export default function LoginPage( { } ) {
     <>
       <div className="login-page">
         <h3 id="login-header">
-          Log In...
+          Login
         </h3>
         <LoginForm redirect={redirect} setRedirect={setRedirect} />
       </div>

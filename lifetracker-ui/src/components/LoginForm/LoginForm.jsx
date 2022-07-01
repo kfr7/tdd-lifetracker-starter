@@ -80,7 +80,7 @@ export default function LoginForm( { redirect, setRedirect } ) {
                     value={loginForm.password}
                     onChange={handleOnInputChange}></input>
             </div>
-            <button className="btn" onClick={handleOnSubmit}>Log In</button>
+            <button className="submit-login" onClick={handleOnSubmit}>Login</button>
         </div>
     )
 }
