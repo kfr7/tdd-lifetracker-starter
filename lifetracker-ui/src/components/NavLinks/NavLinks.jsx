@@ -5,9 +5,9 @@ import { useAuthContext } from  "../../../contexts/auth"
 
 
 
-export default function NavLinks( { isLoggedIn } ) {
+export default function NavLinks( { } ) {
 
-  const { logoutUser } = useAuthContext()
+  const { user, logoutUser } = useAuthContext()
 
   return (
     <div className="nav-links">
@@ -24,12 +24,12 @@ export default function NavLinks( { isLoggedIn } ) {
           <button className="nav-btn">Sleep</button>
         </Link>
         {
-          isLoggedIn ? 
-          <>
+          user !== null ? 
             <Link to="/">
-              <button className="nav-btn">Log Out</button>
+              <button className="nav-btn" onClick={() => {
+                logoutUser()
+              }}>Log Out</button>
             </Link>
-          </>
           :
           <>
             <Link to="/login">

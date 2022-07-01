@@ -16,6 +16,7 @@ CREATE TABLE nutrition (
     name        TEXT NOT NULL,
     category    TEXT NOT NULL,
     calories    INTEGER NOT NULL,
+    quantity    INTEGER NOT NULL DEFAULT 1,
     image_url   TEXT NOT NULL,
     user_id     INTEGER NOT NULL,  --Not sure why user_id is showing up as yellow
     created_at  TIMESTAMP NOT NULL DEFAULT NOW()

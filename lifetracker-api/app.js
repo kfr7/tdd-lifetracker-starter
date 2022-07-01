@@ -17,8 +17,10 @@ app.use(express.json())
 app.use(cors())
 
 const authRoute = require("./routes/auth")
+const nutritionRoute = require("./routes/nutrition")
 
 app.use("/auth", authRoute)
+app.use("/nutrition", nutritionRoute)
 
 app.get("/", async (req, res, next) => {
     res.status(200).json({"ping": "pong"})

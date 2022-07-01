@@ -9,51 +9,44 @@ import AccessForbidden from "../AccessForbidden/AccessForbidden"
 import NutritionPage from "../NutritionPage/NutritionPage"
 import NotFound from "../NotFound/NotFound"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import { AuthContextProvider } from "../../../contexts/auth"
+import { useAuthContext } from  "../../../contexts/auth"
+
+import { NutritionContextProvider} from "../../../contexts/nutrition"
+
+
 
 export default function AppContainer(props) {
 
-  // React.useEffect(() => {
-  //   try {
-  //     window.localStorage.removeItem("lifetracker_token")
-  //   }
-  //   catch(error)
-  //   {
-  //     pass
-  //   }
-  // })
 
   return (
     <AuthContextProvider>
-      <App />
+      <NutritionContextProvider>
+        <App />
+      </NutritionContextProvider>
     </AuthContextProvider>
   )
 }
 
 
 function App(props) {
-  
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false)
+  const { user } = useAuthContext()
+  const [isLoggedIn, setIsLoggedIn] = React.useState(true)
+
 
   return (
     <div className="app">
       <React.Fragment>
         <BrowserRouter>
-        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <Navbar />
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage 
-                                            isLoggedIn={isLoggedIn}
-                                            setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/register" element={<RegistrationPage
-                                              isLoggedIn={isLoggedIn}
-                                              setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/activity" element={ isLoggedIn ? <ActivityPage /> : <AccessForbidden />} />
-            <Route path="/nutrition/*" element={<NutritionPage />} />
-            {/* MAKE ROUTES ADDITIONAL FOR... 
-            /sleep
-            /exercise when I have the time
-             */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/activity" element={ user!==null ? <ActivityPage /> : <AccessForbidden />} />
+            <Route path="/nutrition/*" element={ user!==null ? <NutritionPage /> : <AccessForbidden />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>      

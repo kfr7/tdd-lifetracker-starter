@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 
 
-export default function Navbar( { isLoggedIn } ) {
+export default function Navbar( { } ) {
   
 
   return (
@@ -17,7 +17,7 @@ export default function Navbar( { isLoggedIn } ) {
                     <img id="home-logo" src="https://www.pngplay.com/wp-content/uploads/9/Life-PNG-Free-File-Download.png" alt="Home Logo" />
                 </div>
             </Link>
-            <NavLinks isLoggedIn={isLoggedIn} />
+            <NavLinks />
         </div>
     </div>
     </>

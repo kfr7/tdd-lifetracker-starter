@@ -1,0 +1,52 @@
+.nutrition-overview {
+    display: flex;
+    flex-direction: column;
+    margin: 60px;
+}
+
+
+.banner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background: var(--less-dark-background);
+    height: 120px;
+}
+
+.nutrition-overview .header h3 {
+    font-size: 36px;
+    font-weight: 700;
+    color: orange;
+    align-items: center;
+}
+
+.Button.outline.aqua {
+    background: transparent;
+    color: orange;
+    border: 1px solid black;
+}
+
+.Button.outline {
+    background: transparent;
+    color: orange;
+    border: 1px solid black;
+}
+.Button.small {
+    padding: 10px 20px;
+    max-height: 40px;
+}
+.Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    background: transparent;
+    outline: none;
+    transition: all .2s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}

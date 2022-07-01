@@ -6,6 +6,7 @@ const API_BASE_URL = "http://localhost:3001"
 const AuthContext = React.createContext()
 
 export const AuthContextProvider = ({ children }) => {
+    const [refresh, setRefresh] = React.useState(false)
     const [user, setUser] = React.useState(null)
     const [initialized, setInitialized] = React.useState(false)
     const [isProcessing, setIsProcessing] = React.useState(false)
@@ -13,22 +14,23 @@ export const AuthContextProvider = ({ children }) => {
 
     const apiClient = new ApiClient(API_BASE_URL)
     
+
     React.useEffect(() => {
-        console.log("Entered use effect for the AuthContext.Provider")
-        const fetchUser = () => {
-        // this would usually be your own backend, or localStorage
-        // for example
+        console.log("USING EFFECT")
+        const fetchUser = async () => {
+
         let tokenForUser = null
+        let tempUser = null
         try {
             tokenForUser = window.localStorage.getItem("lifetracker_token")
-            console.log("THE TOKEN:", tokenForUser)
+            console.log("TOKEN:", tokenForUser)
             if (tokenForUser !== null)
             {
                 apiClient.setToken(tokenForUser)
                 setIsProcessing(true)
                 setError(null)
-                setUser(fetchUserFromToken())
-                console.log("THE USER IS..", user)
+                tempUser = await fetchUserFromToken()
+                setUser(tempUser)
                 setError(null)
             }
         }
@@ -43,28 +45,26 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     fetchUser();
-  }, []);
+  }, [refresh, setRefresh]);
 
-    const loginUser = (userParameter) => {
-        console.log("Entered loginUser in auth.jsx")
-        const error = apiClient.login(userParameter)
-        return error
+  const loginUser = async (userParameter) => {
+    return await apiClient.login(userParameter)
     }
 
-    const signupUser = (userParameter) => {
-        console.log("Entered signupUser in auth.jsx")
-        const error = apiClient.signup(userParameter)
-        return error 
+    const signupUser = async (userParameter) => {
+        return await apiClient.signup(userParameter)
     }
 
-    const fetchUserFromToken = () => {
-        return apiClient.fetchUserFromToken()
+    const fetchUserFromToken = async () => {
+        return await (apiClient.fetchUserFromToken())
     }
 
     const logoutUser = () => {
         window.localStorage.removeItem("lifetracker_token")
-        location.reload()
+        location.replace("http://localhost:3000")
     }
+
+    
   
   return (
     <AuthContext.Provider value={{  user, setUser,
@@ -74,17 +74,20 @@ export const AuthContextProvider = ({ children }) => {
                                     loginUser,
                                     signupUser,
                                     fetchUserFromToken,
-                                    logoutUser}}>
+                                    logoutUser,
+                                    refresh, setRefresh}}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-
 export const useAuthContext = () => {
-    const newHook = React.useContext(AuthContext);
-    if (newHook === undefined) {
-        throw new Error("useAuthContext can only be used inside AuthContextProvider");
-    }
-    return newHook;
-   };
+    return React.useContext(AuthContext);
+}
+// export const useAuthContext = () => {
+//     const newHook = React.useContext(AuthContext);
+//     if (newHook === undefined) {
+//         throw new Error("useAuthContext can only be used inside AuthContextProvider");
+//     }
+//     return newHook;
+//    };

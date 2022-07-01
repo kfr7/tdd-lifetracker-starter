@@ -2,9 +2,9 @@ import "./LoginForm.css"
 import * as React from "react"
 import { useAuthContext } from  "../../../contexts/auth"
 
-export default function LoginForm( { isLoggedIn, setIsLoggedIn } ) {
+export default function LoginForm( { redirect, setRedirect } ) {
 
-    const { loginUser } = useAuthContext()
+    const { error, loginUser, refresh, setRefresh } = useAuthContext()
 
     const [loginForm, setLoginForm] = React.useState({
         email: "",
@@ -29,16 +29,33 @@ export default function LoginForm( { isLoggedIn, setIsLoggedIn } ) {
     }
 
     const handleOnSubmit = () => {
-        console.log("Entered handleOnSubmit")
-        const possibleError = loginUser(loginForm)
-        if (possibleError === "")
+        if (loginForm.email.indexOf("@") <= 0) 
             {
-                setIsLoggedIn(true)
+                console.log("Invalid email")
+                return
+            // setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
             }
-            else
-            {
-                console.log(possibleError)
-            }
+        else {
+            console.log("email fine",loginForm.email.indexOf("@") )
+        }
+        
+        console.log("same call--------")
+        try {
+            
+            loginUser(loginForm)
+            if (refresh) {setRefresh(false)} 
+            else {setRefresh(true)}
+            setRedirect(true)
+        }
+        catch (error) {
+            if (refresh) {setRefresh(false)} 
+            else {setRefresh(true)}
+            setRedirect(false)
+        }
+
+        console.log("same call--------")
+
+
     }
 
     return (

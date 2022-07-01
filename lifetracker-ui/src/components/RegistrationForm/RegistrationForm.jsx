@@ -2,7 +2,8 @@ import "./RegistrationForm.css"
 import * as React from "react"
 import { useAuthContext } from  "../../../contexts/auth"
 
-export default function RegistrationForm( { setIsLoggedIn } ) {
+
+export default function RegistrationForm( { redirect, setRedirect } ) {
     const [registrationForm, setRegistrationForm] = React.useState({
         username: "",
         first_name: "",
@@ -12,7 +13,7 @@ export default function RegistrationForm( { setIsLoggedIn } ) {
         confirm_password: ""
     })
 
-    const { signupUser } = useAuthContext()
+    const { signupUser, refresh, setRefresh } = useAuthContext()
 
     const handleOnInputChange = (event) => {
         if (event.target.name === "email") {
@@ -48,26 +49,41 @@ export default function RegistrationForm( { setIsLoggedIn } ) {
 
     const handleOnSubmit = () => {
         // here is where I would make the post request to the back end api
+        if (registrationForm.email.indexOf("@") <= 0) 
+        {
+            console.log("Invalid email")
+            return
+        // setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
+        }
+        else {
+        }
+    
         if (registrationForm.confirm_password !== registrationForm.password)
         {
             console.log("Cannot sign up user with passwords that do not match")
+            return
         }
         else 
         {
-            const possibleError = signupUser({
-                "username": registrationForm.username,
-                "first_name": registrationForm.first_name,
-                "last_name": registrationForm.last_name,
-                "email": registrationForm.email,
-                "password": registrationForm.password
-            })
-            if (possibleError === "")
-            {
-                setIsLoggedIn(true)
+            console.log("entered here for submit register")
+            try{
+                signupUser({
+                    "username": registrationForm.username,
+                    "first_name": registrationForm.first_name,
+                    "last_name": registrationForm.last_name,
+                    "email": registrationForm.email,
+                    "password": registrationForm.password
+                })
+                console.log("sucess")
+                setRefresh(!refresh)
+                setRedirect(true)
+
             }
-            else
+            catch(err)
             {
-                console.log(possibleError)
+                console.log("error occurred")
+                setRefresh(!refresh)
+                setRedirect(false)
             }
         }
     }

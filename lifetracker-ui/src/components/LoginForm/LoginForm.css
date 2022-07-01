@@ -2,15 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 600px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
 }
 
 .input-field {
     margin-top: 10px;
 }
 
+input {
+    padding: 20px 20px;
+    width: 400px;
+    background-color: #ff4e00;
+    background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+}
+
 .btn {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 label {

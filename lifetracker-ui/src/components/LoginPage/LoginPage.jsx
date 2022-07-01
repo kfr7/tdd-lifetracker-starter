@@ -4,30 +4,25 @@ import LoginForm from "../LoginForm/LoginForm"
 import { useNavigate } from "react-router-dom"
 
 
-export default function LoginPage( { isLoggedIn, setIsLoggedIn } ) {
+
+export default function LoginPage( { } ) {
+  const [redirect, setRedirect] = React.useState(false)
   const navigate = useNavigate()
 
   React.useEffect(() => {
-    if (isLoggedIn)
+    if (redirect)
     {
       navigate("/activity")
     }
-    }, [isLoggedIn]);
+    }, [redirect]);
 
   return (
     <>
       <div className="login-page">
-        <h3>
+        <h3 id="login-header">
           Log In...
         </h3>
-        <LoginForm isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}/>
-        {/* { isLoggedIn ?
-          navigate("/activity")
-        :
-          <LoginForm isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}/>
-        } */}
+        <LoginForm redirect={redirect} setRedirect={setRedirect} />
       </div>
     </>
   )
