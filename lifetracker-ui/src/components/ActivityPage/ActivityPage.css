@@ -1,36 +1,24 @@
-.banner-activity h1 {
-    font-size: 42px;
-    color: orange;
-    text-align: center;
+
+.banner {
+    margin-left: 90px;
+    margin-right: 90px;
 }
-
-.banner-activity {
-    text-align: center;
-}
-
-.activity-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} 
-
-.activity-page, .activity-page .content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.activity-page {
-    max-width: 100vw;
-    overflow-x: hidden;
-    background: var(--dark-background);
-}
-
 
 .banner h1 {
     font-size: 42px;
     color: orange;
 }
+
+
+
+.activity-page {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: var(--dark-background);
+} 
+
 
 
 .activity-page .content {
@@ -55,3 +43,6 @@
     margin-right: 90px;
 }
 
+.add-btn {
+    margin: 10px;
+}

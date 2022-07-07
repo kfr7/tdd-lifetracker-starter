@@ -16,5 +16,8 @@
 .activity-feed {
     margin-left: 90px;
     margin-right: 90px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
 }
 
