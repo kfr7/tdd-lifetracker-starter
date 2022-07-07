@@ -111,6 +111,28 @@ export default class ApiClient {
                 return err
             }
         }
+        else if (endpoint === "activity")
+        {
+            try{
+                console.log("4. entered try in activity condition")
+                const res = await axios.get(`${API_BASE_URL}/activity`,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authentication': `Bearer ${this.token}`,
+                                'user-id': information
+                            }
+                        })
+                console.log("5", res.data)
+                return res.data
+            }
+            catch(err)
+            {
+                console.log("5.TWO", "some error")
+                console.error(err.message)
+                return err
+            }
+        }
     }
 
     async login(user) {
@@ -141,6 +163,11 @@ export default class ApiClient {
     async getNutritions(user_id) {
         console.log("inside getNutritions we have 'user id'...", user_id)
         return await (this.request("nutrition_get", user_id))
+    }
+
+    async fetchActivity(user_id) {
+        console.log("3. Entered fetch activity in apiClient")
+        return await (this.request("activity", user_id))
     }
 
 }

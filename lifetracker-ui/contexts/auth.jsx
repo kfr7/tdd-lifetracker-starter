@@ -84,10 +84,3 @@ export const AuthContextProvider = ({ children }) => {
 export const useAuthContext = () => {
     return React.useContext(AuthContext);
 }
-// export const useAuthContext = () => {
-//     const newHook = React.useContext(AuthContext);
-//     if (newHook === undefined) {
-//         throw new Error("useAuthContext can only be used inside AuthContextProvider");
-//     }
-//     return newHook;
-//    };

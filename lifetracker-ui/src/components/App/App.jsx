@@ -15,6 +15,8 @@ import { useAuthContext } from  "../../../contexts/auth"
 
 import { NutritionContextProvider} from "../../../contexts/nutrition"
 
+import { ActivityContextProvider } from "../../../contexts/activity"
+
 
 
 export default function AppContainer(props) {
@@ -23,7 +25,9 @@ export default function AppContainer(props) {
   return (
     <AuthContextProvider>
       <NutritionContextProvider>
-        <App />
+        <ActivityContextProvider>
+          <App />
+        </ActivityContextProvider>
       </NutritionContextProvider>
     </AuthContextProvider>
   )
