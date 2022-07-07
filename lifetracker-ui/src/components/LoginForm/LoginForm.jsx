@@ -39,7 +39,6 @@ export default function LoginForm( { redirect, setRedirect } ) {
             console.log("email fine",loginForm.email.indexOf("@") )
         }
         
-        console.log("same call--------")
         try {
             
             loginUser(loginForm)
@@ -53,7 +52,6 @@ export default function LoginForm( { redirect, setRedirect } ) {
             setRedirect(false)
         }
 
-        console.log("same call--------")
 
 
     }
