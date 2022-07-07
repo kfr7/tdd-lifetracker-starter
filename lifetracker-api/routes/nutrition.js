@@ -27,5 +27,17 @@ router.get("/", async (req, res, next) => {
     }
 })
 
+router.get("/:nutritionId", async (req, res, next) => {
+    try {
+      const nutritionId = req.params.nutritionId
+      const nutrition = await Nutrition.getNutritionById(nutritionId)
+      if (!nutrition) {
+        throw new NotFoundError(`Nutrition with ID... ${nutritionId} not found`)
+      }
+      res.status(200).json({ nutrition })
+    } catch (err) {
+      next(err)
+    }
+  })
 
 module.exports = router

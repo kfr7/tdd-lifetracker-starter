@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import NotFound from "../NotFound/NotFound"
 import NutritionOverview from "../NutritionOverview/NutritionOverview"
 import NutritionNew from "../NutritionNew/NutritionNew"
-// import NutritionalDetail from "../NutritionalDetail/NutritionalDetail"
+import NutritionDetail from "../NutritionDetail/NutritionDetail"
 // use above for all nutrition paths
 
 
@@ -18,7 +18,7 @@ export default function NutritionPage( {} ) {
         <Routes>
           <Route path="/" element={<NutritionOverview />} />
           <Route path="/create" element={<NutritionNew />} />
-          {/* <Route path="/:id/:nutritionId" element={<NutritionalDetail />}  /> */}
+          <Route path="/id/:nutritionId" element={<NutritionDetail />}  />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>

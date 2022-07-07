@@ -128,7 +128,25 @@ export default class ApiClient {
             }
             catch(err)
             {
-                console.log("5.TWO", "some error")
+                console.error(err.message)
+                return err
+            }
+        }
+        else if (endpoint === "nutrition/:nutritionId") {
+            console.log("ENTERED THE NUTRITION ID GETTING CALL")
+            let nutritionId = information
+            try{
+                const res = await axios.get(`${API_BASE_URL}/nutrition/${nutritionId}`,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authentication': `Bearer ${this.token}`,
+                            }
+                        })
+                return res.data
+            }
+            catch(err)
+            {
                 console.error(err.message)
                 return err
             }
@@ -168,6 +186,10 @@ export default class ApiClient {
     async fetchActivity(user_id) {
         console.log("3. Entered fetch activity in apiClient")
         return await (this.request("activity", user_id))
+    }
+
+    async getNutritionById(nutritionId) {
+        return await (this.request(`nutrition/:nutritionId`, nutritionId))
     }
 
 }

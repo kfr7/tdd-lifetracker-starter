@@ -1,6 +1,7 @@
 import * as React from "react"
 import ApiClient from "../services/apiClient"
 import { useAuthContext } from "./auth"
+import { useNutritionContext } from "./nutrition"
 // const { API_BASE_URL } = require("../constants")
 const API_BASE_URL = "http://localhost:3001"
 
@@ -14,6 +15,7 @@ export const ActivityContextProvider = ({ children }) => {
     const [error, setError] = React.useState(null)
     console.log("activity context provider entered for some reason")
     const { user } = useAuthContext()
+    const { nutritions } = useNutritionContext()
     const apiClient = new ApiClient(API_BASE_URL)
     let tempActivity = null
     React.useEffect(() => {
@@ -41,7 +43,7 @@ export const ActivityContextProvider = ({ children }) => {
         }
         fetchActivity()
         
-  }, [user]);
+  }, [user, nutritions]);
 
   const getActivity = async () => {
     console.log("2. ENTERED fetchActivity in activity.jsx")

@@ -64,6 +64,17 @@ class Nutrition {
         const result = await db.query(text, values);
         return result.rows;  // this is the array of all the rows
     }
+
+    static async getNutritionById(nutritionId) {
+        if (!nutritionId)
+        {
+            throw new BadRequestError("No nutritionId passed through");
+        }
+        const text = `SELECT * FROM nutrition WHERE id=$1`;
+        const values = [nutritionId];
+        const result = await db.query(text, values);
+        return result.rows[0]
+    }
 }
 
 

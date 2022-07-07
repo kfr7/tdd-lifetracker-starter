@@ -1,0 +1,11 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nf-header {
+    text-align: center;
+    color: orange;
+    font-size: 50px;
+}

@@ -41,7 +41,10 @@ export default function LoginForm( { redirect, setRedirect } ) {
         
         try {
             
-            loginUser(loginForm)
+            loginUser({
+                email: loginForm.email.toLowerCase(),
+                password: loginForm.password,
+            })
             if (refresh) {setRefresh(false)} 
             else {setRefresh(true)}
             setRedirect(true)

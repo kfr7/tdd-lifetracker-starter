@@ -14,7 +14,7 @@ export default function ActivityPage( {} ) {
   return (
     <div className="activity-page">
       <div className="banner">
-        <h1>Activity Feed</h1>
+        <h1>Detailed Activity Feed</h1>
       </div>
       <div className="content">
       {

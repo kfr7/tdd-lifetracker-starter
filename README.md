@@ -302,19 +302,19 @@ The components in the `App.jsx` file should render the following components (alo
     - [x] Should accept **at least** the following props:
       - [x] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
       - [x] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
-      - [ ] Any other
+      - [x] Any other
     - [x] Inside an element with the `className` of `per-category`, it should:
       - [x] Render the text: `"Average Calories Per Category` inside an `h4` element
       - [x] Take the first `6` or less items in the `avgCaloriesPerCategory` array and render a `SummaryStat.jsx` component for each item.
         - [x] It should pass the calories **rounded down to one decimal place** as the `stat` prop
         - [x] It should pass the string of `calories` as the `label` prop
         - [x] It should pass the `category` as the `substat` prop
-    - [ ] Inside an element with the `className` of `per-day`, it should:
-      - [ ] Render the text: `"Total Calories Per Day` inside an `h4` element
-      - [ ] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
-        - [ ] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
-        - [ ] It should pass the string of `calories` as the `label` prop
-        - [ ] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
+    - [x] Inside an element with the `className` of `per-day`, it should:
+      - [x] Render the text: `"Total Calories Per Day` inside an `h4` element
+      - [x] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
+        - [x] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
+        - [x] It should pass the string of `calories` as the `label` prop
+        - [x] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
 
   - [x] The **`SummaryStat.jsx`** component:
 
@@ -323,9 +323,9 @@ The components in the `App.jsx` file should render the following components (alo
       - [x] `stat` - the primary statistic to display
       - [x] `label` - the unit label assigned to the statistic
       - [x] `substat` - a secondary statistic related to the primary statistic
-    - [ ] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
-    - [ ] It should render the `label` prop inside an element with the `className` of `stat-label`
-    - [ ] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
+    - [x] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
+    - [x] It should render the `label` prop inside an element with the `className` of `stat-label`
+    - [x] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
 
   - [x] The **`nutrition`** context
 
@@ -368,8 +368,8 @@ The components in the `App.jsx` file should render the following components (alo
   - [x] The **`NutritionFeed.jsx`** component:
 
     - [x] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
-    - [ ] It should receive **at least** the following props:
-      - [ ] `nutritions` - an array of `nutrition` items
+    - [x] It should receive **at least** the following props:
+      - [x] `nutritions` - an array of `nutrition` items
     - [x] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
     - [x] If the `nutritions` array does have items in it:
       - [x] For each item in the `nutritions` array, it should render a `NutritionCard.jsx` component
@@ -385,7 +385,7 @@ The components in the `App.jsx` file should render the following components (alo
     - [x] Should render an input element for the following fields:
       - [x] `name` - name of the nutrition item (defaults to an empty string)
       - [x] `calories` - number of calories in the nutrition item (defaults to 1)
-      - [ ] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
+      - [x] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
       - [x] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
     - [x] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
       - [x] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
@@ -400,25 +400,25 @@ The components in the `App.jsx` file should render the following components (alo
       - [x] When clicked, it should call a function that creates a new nutrition entry
     - [x] After the form has been succesfully submitted:
       - [x] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
-      - [ ] Refetch the `activity` data so that new summary stats will be calculated
+      - [x] Refetch the `activity` data so that new summary stats will be calculated
 
-  - [ ] The **`NutritionDetail.jsx`** component:
+  - [x] The **`NutritionDetail.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
-    - [ ] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
-    - [ ] When the component is mounted to the screen...
-      - [ ] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
-      - [ ] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
-      - [ ] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
-      - [ ] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
-      - [ ] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
+    - [x] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
+    - [x] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
+    - [x] When the component is mounted to the screen...
+      - [x] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
+      - [x] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
+      - [x] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
+      - [x] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
+      - [x] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
 
   - [x] The **`NutritionCard.jsx`** component:
 
     - [x] Should render JSX that is wrapped by an element with the `className` of `nutrition-card`
     - [x] Should accept **at least** the following props:
       - [x] `nutrition` - should be a nutrition entry object containing the following attributes:
-        - [ ] `imageUrl` - (not required)
+        - [x] `imageUrl` - (not required)
         - [x] `name` - (required)
         - [x] `calories` - (required)
         - [x] `category` - (required)

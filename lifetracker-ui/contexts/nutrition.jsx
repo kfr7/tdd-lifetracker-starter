@@ -59,13 +59,17 @@ export const NutritionContextProvider = ({ children }) => {
         return await (apiClient.getNutritions(user.id))
     }
 
+    const getNutritionById = async (nutritionId) => {
+        return await (apiClient.getNutritionById(nutritionId))
+    }
+
   
   return (
     <NutritionContext.Provider value={{  nutritions, setNutritions,
                                     initialized, setInitialized, 
                                     isLoading, setIsLoading,
                                     error, setError, 
-                                    postNutritionItem, getNutritions,
+                                    postNutritionItem, getNutritions, getNutritionById,
                                     refresh, setRefresh}}>
       {children}
     </NutritionContext.Provider>

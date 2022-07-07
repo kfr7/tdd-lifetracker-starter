@@ -29,7 +29,12 @@ export default function NutritionForm( {} ) {
             console.log("Error here because some field was left blank in add nutrition")
             return
         }
-        postNutritionItem(form)
+        postNutritionItem({name: form.name.toLowerCase(),
+        calories: form.calories,
+        category: form.category.toLowerCase(),
+        quantity: form.quantity,
+        imageUrl: form.imageUrl
+    })
         setRefresh(!refresh)
         navigate("/nutrition")
     }

@@ -4,9 +4,9 @@ import * as React from "react"
 export default function Loading( {} ) {
   return (
     <div className="loading">
-      <h2 className="loading-message">
+      <h1 className="loading-message">
         Loading...
-      </h2>
+      </h1>
     </div>
   )
 }

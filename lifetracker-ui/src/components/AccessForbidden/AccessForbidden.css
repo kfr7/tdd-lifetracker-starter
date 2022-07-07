@@ -1,5 +1,27 @@
-.actual-text {
+.access-forbidden {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.af-header {
     text-align: center;
     color: orange;
     font-size: 50px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.redirect-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 20px;
 }

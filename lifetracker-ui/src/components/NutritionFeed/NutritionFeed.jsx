@@ -20,7 +20,9 @@ console.log(nutritions?.nutritions)
         nutritions?.nutritions.map((nutrition, idx) => (
             <NutritionCard 
             key={idx}
-            nutrition={{"name": nutrition.name,
+            nutrition={{
+                        "id":nutrition.id,
+                        "name": nutrition.name,
                         "calories": nutrition.calories,
                         "category": nutrition.category,
                         "quantity": nutrition.quantity,

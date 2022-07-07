@@ -68,10 +68,10 @@ export default function RegistrationForm( { redirect, setRedirect } ) {
             console.log("entered here for submit register")
             try{
                 signupUser({
-                    "username": registrationForm.username,
-                    "first_name": registrationForm.first_name,
-                    "last_name": registrationForm.last_name,
-                    "email": registrationForm.email,
+                    "username": registrationForm.username.toLowerCase(),
+                    "first_name": registrationForm.first_name.toLowerCase(),
+                    "last_name": registrationForm.last_name.toLowerCase(),
+                    "email": registrationForm.email.toLowerCase(),
                     "password": registrationForm.password
                 })
                 console.log("sucess")
