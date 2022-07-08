@@ -13,7 +13,7 @@ export default function NutritionOverview( {} ) {
   return (
     <div className="nutrition-overview">
     
-      <div className="banner">
+      <div className="nutrition-banner">
         <h3>Overview</h3>
         <Link to="/nutrition/create">
             <button className="record-btn">Record Nutrition</button>

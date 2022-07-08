@@ -9,15 +9,15 @@
 }
 
 
-.banner {
-    align-items: center;
+.nutrition-banner {
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
     background: var(--less-dark-background);
     height: 120px;
 }
 
-.nutrition-overview .banner h3 {
+.nutrition-overview .nutrition-banner h3 {
     font-size: 35px;
     font-weight: 700;
     color: orange;
@@ -25,9 +25,6 @@
 
 
 .record-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 16px 20px;
     border-radius: 4px;
     cursor: pointer;
