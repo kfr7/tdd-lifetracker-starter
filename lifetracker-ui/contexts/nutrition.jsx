@@ -1,7 +1,7 @@
 import * as React from "react"
 import ApiClient from "../services/apiClient"
 // const { API_BASE_URL } = require("../constants")
-const API_BASE_URL = "http://localhost:3001"
+import API_BASE_URL from "../constants"
 import { useAuthContext } from  "./auth"
 
 

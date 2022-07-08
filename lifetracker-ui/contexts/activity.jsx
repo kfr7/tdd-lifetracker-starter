@@ -3,7 +3,7 @@ import ApiClient from "../services/apiClient"
 import { useAuthContext } from "./auth"
 import { useNutritionContext } from "./nutrition"
 // const { API_BASE_URL } = require("../constants")
-const API_BASE_URL = "http://localhost:3001"
+import API_BASE_URL from "../constants"
 
 const ActivityContext = React.createContext()
 

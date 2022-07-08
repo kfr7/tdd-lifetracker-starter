@@ -1,7 +1,7 @@
 import * as React from "react"
 import ApiClient from "../services/apiClient"
 // const { API_BASE_URL } = require("../constants")
-const API_BASE_URL = "http://localhost:3001"
+import API_BASE_URL from "../constants"
 
 const AuthContext = React.createContext()
 
@@ -62,7 +62,8 @@ export const AuthContextProvider = ({ children }) => {
 
     const logoutUser = () => {
         window.localStorage.removeItem("lifetracker_token")
-        location.replace("http://localhost:3000")
+        setUser(null)
+        // location.replace("http://localhost:3000")
     }
 
     

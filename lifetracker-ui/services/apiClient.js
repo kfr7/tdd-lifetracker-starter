@@ -1,7 +1,6 @@
 import axios from "axios"
 // const { API_BASE_URL } = require("../constants")
-const API_BASE_URL = "http://localhost:3001"
-
+import API_BASE_URL from "../constants"
 
 export default class ApiClient {
     constructor(remoteHostUrl) {
@@ -13,8 +12,50 @@ export default class ApiClient {
         this.token = token
     }
 
+
+    // async request({endpoint, method="GET", data={}}) {
+    //     console.log("The data is:", data)
+
+    //     const wholeUrl = `${this.remoteHostUrl}/${endpoint}`
+    //     const headers = {
+    //         "Content-Type": "application/json"
+    //     }
+    //     if (this.token) {
+    //         headers["Authorization"] = `Bearer ${this.token}`
+    //     }
+
+    //     if (data.hasOwnProperty("user_id"))
+    //     {
+    //         console.log(data)
+    //         headers["user-id"] = data.user_id
+    //     }
+
+    //     try {
+    //         const res = await axios({ "url": wholeUrl, method, data, headers })
+
+    //         if (endpoint === "auth/login") {
+    //             window.localStorage.removeItem("lifetracker_token")
+    //             window.localStorage.setItem("lifetracker_token", res.data.token)
+    //         }
+    //         else if (endpoint === "auth/register") {
+    //             this.request({ endpoint: "auth/login", method: 'POST', data: data })
+    //         }
+
+    //         return res.data
+    //     }
+    //     catch (error) {
+    //         if (endpoint === "auth/login") {
+    //             window.localStorage.removeItem("lifetracker_token")
+    //         }
+            
+    //         console.error({ errorResponse: error.response })
+    //         const message = error?.response?.data?.error?.message
+    //         return message || String(error)
+    //     }
+
+    // }
+    
     async request(endpoint, information) {
-        let user = null;
         if (endpoint === "login")
         {
             try{
@@ -175,19 +216,29 @@ export default class ApiClient {
     async login(user) {
         // user have keys called email and password
         return await this.request("login", user)
+        // return await this.request({ endpoint: "auth/login", method: 'POST', data: user })
     }
 
     async signup(user) {
         // user have keys called email, password, username, fname, lname
         return await this.request("register", user)
+        // return await this.request({ endpoint: "auth/register", method: 'POST', data: user })
     }
 
     async fetchUserFromToken() {
         // token is stored inside of this.token
         return await (this.request("me", this.token))
+        // return await (this.request({ endpoint: 'auth/me', method: 'GET' }))
     }
 
     async postNutritionItem(nutritionItem, user_id) {
+        // return await this.request({ endpoint: "nutrition", method: 'POST', data: {"name": nutritionItem.name,
+        //                                                                                         "category": nutritionItem.category,
+        //                                                                                         "calories": nutritionItem.calories,
+        //                                                                                         "quantity": nutritionItem.quantity,
+        //                                                                                         "image_url": nutritionItem.imageUrl,
+        //                                                                                         "user_id": user_id
+        //                                                                                         }})
         return await (this.request("nutrition_post", {"name": nutritionItem.name,
                                                     "category": nutritionItem.category,
                                                     "calories": nutritionItem.calories,
@@ -197,21 +248,25 @@ export default class ApiClient {
                                                      }))
     }
 
+    // SPECIAL CASE
     async getNutritions(user_id) {
-        console.log("inside getNutritions we have 'user id'...", user_id)
+        // return await this.request({ endpoint: "nutrition", method: 'GET', data: {user_id}})
         return await (this.request("nutrition_get", user_id))
     }
 
     async fetchActivity(user_id) {
-        console.log("3. Entered fetch activity in apiClient")
+        // return await this.request({ endpoint: "activity", method: 'GET', data:{user_id}})
+        // console.log("3. Entered fetch activity in apiClient")
         return await (this.request("activity", user_id))
     }
 
     async getNutritionById(nutritionId) {
+        // return await this.request({ endpoint: `nutrition/${nutritionId}`, method: 'GET', data:{user_id}})
         return await (this.request(`nutrition/:nutritionId`, nutritionId))
     }
 
     async getActivitySummaryStats(user_id) {
+        // return await this.request({ endpoint: "activity/overview", method: 'GET', data: {user_id}})
         return await (this.request("activity/overview", user_id))
     }
 
