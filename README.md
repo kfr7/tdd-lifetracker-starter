@@ -868,7 +868,7 @@ I would have made error handling better. As well as hopefully find out how to fi
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-[Add your response here]
+I was composed and didn't talk to fast during my presentation. I also answered the questions thoroughly with details. I focused a bit too much on the time limit and should have kept on going to show all the features I had to offer such as clicking a nutrition and seeing the details.
 
 ### Open-source libraries used
 
