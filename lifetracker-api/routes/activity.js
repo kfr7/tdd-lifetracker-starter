@@ -19,4 +19,19 @@ router.get("/", async (req, res, next) => {
     }
 })
 
+router.get("/overview", async (req, res, next) => {
+    try {
+        const user_id = req.headers['user-id']
+        if (user_id == null) 
+        {
+            throw new BadRequestError("No header passed when trying to access information regarding user")
+        }
+        const averageDailyCalories = await Activity.getNutritionSummaryStat(user_id)
+        res.status(200).json({"overview": {averageDailyCalories} })
+    }
+    catch(error) {
+        next(error)
+    }
+})
+
 module.exports = router

@@ -24,6 +24,16 @@ class Activity {
         const results = await db.query(text, values)
         return results.rows
     }
+    static async getNutritionSummaryStat(user_id) {
+        if (!user_id)
+        {
+            throw new BadRequestError("No user_id passed through");
+        }
+        const text = `SELECT ROUND(AVG(sum), 2) AS "averageDailyCalories" FROM (SELECT SUM(calories*quantity) FROM nutrition WHERE user_id=$1 GROUP BY created_at::date) AS foo;`;
+        const values = [user_id]
+        const results = await db.query(text, values)
+        return results.rows[0].averageDailyCalories
+    }
     
 }
 

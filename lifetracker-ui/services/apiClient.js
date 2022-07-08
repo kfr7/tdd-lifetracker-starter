@@ -151,6 +151,25 @@ export default class ApiClient {
                 return err
             }
         }
+        else if (endpoint === "activity/overview") {
+            try{
+                const res = await axios.get(`${API_BASE_URL}/activity/overview`,
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authentication': `Bearer ${this.token}`,
+                                'user-id': information
+                            }
+                        })
+                console.log("THE RESPONSE OF res.data.overview..", res.data.overview)
+                return res.data
+            }
+            catch(err)
+            {
+                console.error(err.message)
+                return err
+            }
+        }
     }
 
     async login(user) {
@@ -190,6 +209,10 @@ export default class ApiClient {
 
     async getNutritionById(nutritionId) {
         return await (this.request(`nutrition/:nutritionId`, nutritionId))
+    }
+
+    async getActivitySummaryStats(user_id) {
+        return await (this.request("activity/overview", user_id))
     }
 
 }

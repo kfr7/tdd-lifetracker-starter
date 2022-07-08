@@ -7,6 +7,7 @@ import RegistrationPage from "../RegistrationPage/RegistrationPage"
 import ActivityPage from "../ActivityPage/ActivityPage"
 import AccessForbidden from "../AccessForbidden/AccessForbidden"
 import NutritionPage from "../NutritionPage/NutritionPage"
+import ActivityOverview from "../ActivityOverview/ActivityOverview"
 import NotFound from "../NotFound/NotFound"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
@@ -50,7 +51,7 @@ function App(props) {
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/activity" element={ user!==null ? <ActivityPage /> : <AccessForbidden />} />
             <Route path="/nutrition/*" element={ user!==null ? <NutritionPage /> : <AccessForbidden />} />
-
+            <Route path="/activity/overview" element={ user!==null ? <ActivityOverview /> : <AccessForbidden />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>      

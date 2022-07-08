@@ -46,8 +46,11 @@ export const ActivityContextProvider = ({ children }) => {
   }, [user, nutritions]);
 
   const getActivity = async () => {
-    console.log("2. ENTERED fetchActivity in activity.jsx")
     return await apiClient.fetchActivity(user.id)
+    }
+
+  const getActivitySummaryStats = async () => {
+    return await apiClient.getActivitySummaryStats(user.id)
     }
 
 
@@ -56,7 +59,7 @@ export const ActivityContextProvider = ({ children }) => {
     <ActivityContext.Provider value={{  activity, setActivity,
                                     initialized, setInitialized,
                                     isLoading, setIsLoading,
-                                    error, setError}}>
+                                    error, setError, getActivitySummaryStats}}>
       {children}
     </ActivityContext.Provider>
   );

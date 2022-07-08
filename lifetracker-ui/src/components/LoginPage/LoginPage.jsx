@@ -12,7 +12,7 @@ export default function LoginPage( { } ) {
   React.useEffect(() => {
     if (redirect)
     {
-      navigate("/activity")
+      navigate("/activity/overview")
     }
     }, [redirect]);
 

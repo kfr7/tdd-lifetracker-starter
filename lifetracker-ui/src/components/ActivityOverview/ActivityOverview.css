@@ -1,0 +1,51 @@
+
+.banner {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+.banner h1 {
+    font-size: 42px;
+    color: orange;
+}
+
+
+
+.activity-overview {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: var(--dark-background);
+} 
+
+
+
+.activity-overview .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: var(--dark-background);
+}
+
+.content {
+    width: 100%;
+    max-width: 100vw;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
+.add-btn {
+    margin: 10px;
+    color: black;
+    background-color: #ff4e00;
+    background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+}

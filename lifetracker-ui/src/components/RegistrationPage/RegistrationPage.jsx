@@ -15,7 +15,7 @@ export default function RegistrationPage( { } ) {
     React.useEffect(() => {
       if (redirect)
       {
-        navigate("/activity")
+        navigate("/activity/overview")
       }
       }, [redirect]);
 

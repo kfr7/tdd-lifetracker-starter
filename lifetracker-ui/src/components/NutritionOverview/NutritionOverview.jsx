@@ -16,7 +16,7 @@ export default function NutritionOverview( {} ) {
       <div className="banner">
         <h3>Overview</h3>
         <Link to="/nutrition/create">
-            <button className="Button outline small outline">Record Nutrition</button>
+            <button className="record-btn">Record Nutrition</button>
         </Link>
       </div>
       {isLoading ? 

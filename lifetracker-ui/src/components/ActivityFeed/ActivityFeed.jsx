@@ -9,7 +9,7 @@ import moment from "moment"
 
 export default function ActivityFeed( {} ) {
   const { activity } = useActivityContext()
-  console.log("Activity:", activity?.nutrition?.calories)
+  
   return (
     <div className="activity-feed">
         <div className="per-category">

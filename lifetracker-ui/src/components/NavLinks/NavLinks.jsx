@@ -11,8 +11,11 @@ export default function NavLinks( { } ) {
 
   return (
     <div className="nav-links">
+        <Link to="/activity/overview">
+          <button className="nav-btn">Activity Overview</button>
+        </Link>
         <Link to="/activity">
-          <button className="nav-btn">Activity</button>
+          <button className="nav-btn">Activity Details</button>
         </Link>
         <Link to="/exercise">
           <button className="nav-btn">Exercise</button>

@@ -1,0 +1,21 @@
+.overview-card {
+    width: 360px;
+    height: 220px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    padding: 16px 32px;
+    background-color: #ff4e00;
+    background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+}
+
+.summary-name {
+    font-size: 30px;
+}
+
+.summary-value {
+    font-size: 30px;
+}
+
