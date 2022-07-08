@@ -85,8 +85,9 @@ export default class ApiClient {
                                 'Content-Type': 'application/json'
                             }
                         })
-                this.login({"email": information.email, "password": information.password})
-                return res.data
+                // this.login({"email": information.email, "password": information.password})
+                return await this.request("login", {"email": information.email, "password": information.password})
+                // return res.data
             }
             catch(err)
             {

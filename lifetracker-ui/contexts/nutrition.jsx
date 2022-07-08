@@ -20,10 +20,8 @@ export const NutritionContextProvider = ({ children }) => {
     let tempNutritions = null
     
     React.useEffect(() => {
-        console.log("USING EFFECT for Nutrition")
         const fetchNutritions = async () => {
         try {
-            console.log("About to check condition, user is:", user.id)
             if (user !== null)
             {
                 setIsLoading(true)
@@ -56,6 +54,11 @@ export const NutritionContextProvider = ({ children }) => {
     }
 
     const getNutritions = async () => {
+        if (!user.hasOwnProperty("id"))
+        {
+            console.log("Can't get the item without the user being logged in")
+            return null
+        }
         return await (apiClient.getNutritions(user.id))
     }
 
