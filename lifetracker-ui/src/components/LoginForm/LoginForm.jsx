@@ -4,7 +4,7 @@ import { useAuthContext } from  "../../../contexts/auth"
 
 export default function LoginForm( { redirect, setRedirect } ) {
 
-    const { error, loginUser, refresh, setRefresh } = useAuthContext()
+    const { error, loginUser, refresh, setRefresh, userHasUpdated, setUserHasUpdated } = useAuthContext()
 
     const [loginForm, setLoginForm] = React.useState({
         email: "",
@@ -45,6 +45,8 @@ export default function LoginForm( { redirect, setRedirect } ) {
                 email: loginForm.email.toLowerCase(),
                 password: loginForm.password,
             })
+            setUserHasUpdated(!userHasUpdated)
+
             if (refresh) {setRefresh(false)} 
             else {setRefresh(true)}
             setRedirect(true)
@@ -57,10 +59,11 @@ export default function LoginForm( { redirect, setRedirect } ) {
 
 
 
+
     }
 
     return (
-        <div className="login-form">
+        <div className="login-form border">
             <div className="input-field">
                 <label htmlFor="email">Email</label>
                 <br/>

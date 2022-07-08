@@ -15,6 +15,20 @@ export default function ActivityOverview( {} ) {
     
     const [summary, setSummary] = React.useState(null)
     let tempSummary = null
+
+    const determineComponent = () => {
+      if (summary===null){
+        return <Loading />
+      }
+      else if (summary.averageDailyCalories===null) {
+        return <h2 className="no-info">No information to show. Please enter some stats!</h2>
+      }
+      else {
+        return <ActivityOverviewCard 
+        title="Avg Daily Calories"
+        value={summary.averageDailyCalories} />
+      }
+    }
   
   React.useEffect(() => {
     const fetchActivitySummaries = async () => {
@@ -22,6 +36,7 @@ export default function ActivityOverview( {} ) {
         setIsLoading(true)
         setError(null)
         tempSummary = await getActivitySummaryStats()
+        console.log(tempSummary.overview)
         setSummary(tempSummary.overview)
         setError(null)
     }
@@ -40,7 +55,7 @@ fetchActivitySummaries();
 
   return (
     <div className="activity-overview">
-      <div className="banner">
+      <div className="activity-overview-banner">
         <h1>Activity Overview</h1>
         <div className="other-buttons">
           <Link to="/exercise">
@@ -56,12 +71,7 @@ fetchActivitySummaries();
       </div>
       <div className="content">
       {
-        summary===null ? <Loading /> :
-        <>
-            <ActivityOverviewCard 
-            title="Avg Daily Calories"
-            value={summary.averageDailyCalories} />
-        </>
+        determineComponent()
       }
       </div>
     </div>

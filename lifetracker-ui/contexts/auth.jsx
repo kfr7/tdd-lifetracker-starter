@@ -6,6 +6,7 @@ const API_BASE_URL = "http://localhost:3001"
 const AuthContext = React.createContext()
 
 export const AuthContextProvider = ({ children }) => {
+    const [userHasUpdated, setUserHasUpdated] = React.useState(false)
     const [refresh, setRefresh] = React.useState(false)
     const [user, setUser] = React.useState(null)
     const [initialized, setInitialized] = React.useState(false)
@@ -45,7 +46,7 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     fetchUser();
-  }, [refresh, setRefresh]);
+  }, [userHasUpdated]);
 
   const loginUser = async (userParameter) => {
     return await apiClient.login(userParameter)
@@ -75,7 +76,8 @@ export const AuthContextProvider = ({ children }) => {
                                     signupUser,
                                     fetchUserFromToken,
                                     logoutUser,
-                                    refresh, setRefresh}}>
+                                    refresh, setRefresh,
+                                    userHasUpdated, setUserHasUpdated}}>
       {children}
     </AuthContext.Provider>
   );

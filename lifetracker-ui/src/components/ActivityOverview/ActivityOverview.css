@@ -1,10 +1,13 @@
 
-.banner {
+.activity-overview-banner {
     margin-left: 90px;
     margin-right: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.banner h1 {
+.activity-overview-banner h1 {
     font-size: 42px;
     color: orange;
 }
