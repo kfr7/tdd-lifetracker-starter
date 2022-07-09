@@ -6,8 +6,8 @@
 //
 // SWITCH BELOW TWO IF ON LOCAL MACHINE OR HEROKU
 //---------------------------------------------------------------
-// const API_BASE_URL = "http://localhost:3001"
-const API_BASE_URL = "https://lifetracker-my-project.herokuapp.com"
+const API_BASE_URL = "http://localhost:3001"
+// const API_BASE_URL = "https://lifetracker-my-project.herokuapp.com"
 // ---------------------------------------------------------------
 
 // `PRODUCTION_API_BASE_URL` - set to whatever url the production API is deployed at
